@@ -1,0 +1,40 @@
+package io.traqueno.user.entity.entrypoint.api.auth
+
+import io.traqueno.user.entity.core.service.UserAuthService
+import io.traqueno.user.entity.entrypoint.api.auth.model.LoginRequest
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.verify
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
+
+
+@Nested
+internal class UserAuthApiTest {
+    private val userAuthService: UserAuthService = mockk()
+
+    private val userAuthApi = UserAuthApi(userAuthService)
+
+    @Test
+    fun `on valid login request , userAuthService login gets called`() {
+        //arrange
+        val email = "email"
+        val password = "secret"
+        val jwt = "jwt"
+
+        every {
+            userAuthService.login(email, password)
+        } returns jwt
+
+        //act
+        val actual = userAuthApi.login(LoginRequest(email, password))
+
+        //assert
+        assertThat(actual.jwt).isEqualTo(jwt)
+
+        verify {
+            userAuthService.login(email, password)
+        }
+    }
+}
