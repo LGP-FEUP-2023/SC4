@@ -51,11 +51,11 @@ jobs:
 
       - name: Change gradlew permissions
         run: chmod +x ./gradlew
-        working-directory: user-entity/
+        working-directory: traqueno-backend/user-entity/
 
       - name: Build with Gradle
         run: ./gradlew build -Dquarkus.package.type=uber-jar
-        working-directory: user-entity/
+        working-directory: traqueno-backend/user-entity/
 
       - uses: actions/upload-artifact@master
         with:
