@@ -19,12 +19,12 @@ on:
     branches:
       - main
     paths:
-      - user-entity/**
+      - traqueno-backend/user-entity/**
   push:
     branches:
       - main
     paths:
-      - user-entity/**
+      - traqueno-backend/user-entity/**
 
 jobs:
   build:
