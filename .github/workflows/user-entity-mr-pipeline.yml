@@ -60,7 +60,7 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-          path: ${{ env.AZURE_FUNCTIONAPP_NAME }}/${{ env.AZURE_FUNCTIONAPP_NAME }}-entrypoint/${{ env.AZURE_FUNCTIONAPP_NAME }}-entrypoint-rest/build/${{ env.AZURE_FUNCTIONAPP_NAME }}-entrypoint-rest-1.0-SNAPSHOT-runner.jar
+          path: 'traqueno-backend/${{ env.AZURE_FUNCTIONAPP_NAME }}/${{ env.AZURE_FUNCTIONAPP_NAME }}-entrypoint/${{ env.AZURE_FUNCTIONAPP_NAME }}-entrypoint-rest/build/${{ env.AZURE_FUNCTIONAPP_NAME }}-entrypoint-rest-1.0-SNAPSHOT-runner.jar'
 
   deploy:
     if: github.event_name != 'pull_request' && github.event_name == 'workflow_dispatch'
