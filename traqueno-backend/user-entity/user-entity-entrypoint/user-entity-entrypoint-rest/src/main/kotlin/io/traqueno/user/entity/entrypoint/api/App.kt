@@ -18,7 +18,7 @@ import javax.ws.rs.core.Application
     ),
     servers = [
         Server(
-            description = "Dead Man Switch Backend API",
+            description = "Traqueno Backend API",
             url = "/"
         )
     ]
