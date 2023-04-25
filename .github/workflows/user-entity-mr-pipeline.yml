@@ -74,11 +74,11 @@ jobs:
           path: ${{ env.AZURE_FUNCTIONAPP_NAME }}-entrypoint-rest-1.0-SNAPSHOT-runner.jar
 
       - name: Copy jar file into azure-deploy folder
-        run: cp ${{ env.AZURE_FUNCTIONAPP_NAME }}-entrypoint-rest-1.0-SNAPSHOT-runner.jar/${{ env.AZURE_FUNCTIONAPP_NAME }}-entrypoint-rest-1.0-SNAPSHOT-runner.jar ${{ env.AZURE_FUNCTIONAPP_NAME }}/azure-deploy/
+        run: cp ${{ env.AZURE_FUNCTIONAPP_NAME }}-entrypoint-rest-1.0-SNAPSHOT-runner.jar/${{ env.AZURE_FUNCTIONAPP_NAME }}-entrypoint-rest-1.0-SNAPSHOT-runner.jar traqueno-backend/${{ env.AZURE_FUNCTIONAPP_NAME }}/azure-deploy/
 
       - name: Zip azure-deploy folder
         run: |
-          cd ${{ env.AZURE_FUNCTIONAPP_NAME }}/azure-deploy/
+          cd traqueno-backend/${{ env.AZURE_FUNCTIONAPP_NAME }}/azure-deploy/
           zip -r function_app.zip .
 
       - name: 'Run Azure Functions action'
