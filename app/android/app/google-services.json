@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "49740925008",
+    "project_id": "traqueno-a1584",
+    "storage_bucket": "traqueno-a1584.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49740925008:android:396a872980c94e4a652955",
+        "android_client_info": {
+          "package_name": "com.mycompany.traqueno"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49740925008-a01acngh2eh4jff5eph71cabplc4bt8s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.traqueno",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "49740925008-2af3cnp0qckehplujhpsql8854jqplmt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbGeJk9o60-uJNCZzybh-H6qClK1mNCFs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49740925008-2af3cnp0qckehplujhpsql8854jqplmt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "49740925008-0gp8bp1o1b068t6oq3lth9eqqn9mn9m5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.traqueno"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
