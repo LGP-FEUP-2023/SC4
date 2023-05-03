@@ -14,13 +14,13 @@ on:
        - debug
   push:
     branches:
-    - main
+     - main
     paths:
      - app/
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - main
+     - main
     paths:
      - app/
 
