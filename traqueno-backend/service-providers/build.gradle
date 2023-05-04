@@ -1,0 +1,62 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+    id "org.jetbrains.kotlin.plugin.allopen" version "$kotlinPluginVersion"
+    id 'io.quarkus' apply false
+    id "org.kordamp.gradle.jandex" version "$jandexPluginVersion"
+    id "org.sonarqube" version "3.5.0.2730"
+}
+
+allprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'jacoco'
+    apply plugin: "kotlin-allopen"
+    apply plugin: 'org.jetbrains.kotlin.jvm'
+    apply plugin: 'org.kordamp.gradle.jandex'
+
+    group = "io.traqueno.service.providers"
+    version = "1.0-SNAPSHOT"
+
+    compileKotlin {
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_11
+    }
+    compileTestKotlin {
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_11
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation platform("io.quarkus:quarkus-bom:$quarkusBomVersion")
+
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
+
+        implementation("io.quarkus:quarkus-arc")
+        implementation("io.quarkus:quarkus-kotlin")
+
+        implementation 'com.azure:azure-security-keyvault-secrets:4.2.0'
+        implementation 'com.azure:azure-identity:1.1.0'
+        implementation("org.jboss.logmanager:log4j2-jboss-logmanager")
+
+        testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+        testImplementation "org.assertj:assertj-core:$assertjVersion"
+        testImplementation "io.mockk:mockk:$mockkVersion"
+    }
+
+     test{
+        useJUnitPlatform()
+        finalizedBy jacocoTestReport
+    }
+
+}
+
+subprojects {
+    allOpen {
+        annotation("javax.ws.rs.Path")
+        annotation("javax.enterprise.context.ApplicationScoped")
+        annotation("io.quarkus.test.junit.QuarkusTest")
+    }
+}

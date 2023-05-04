@@ -1,0 +1,8 @@
+dependencies {
+    implementation project(':user-entity-core')
+    implementation("org.litote.kmongo:kmongo:$kmongoVersion")
+
+    implementation platform("org.testcontainers:testcontainers-bom:$testContainersVersion")
+    testImplementation('org.testcontainers:mongodb')
+    testImplementation('org.testcontainers:junit-jupiter')
+}

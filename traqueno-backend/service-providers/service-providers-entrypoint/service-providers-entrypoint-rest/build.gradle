@@ -1,0 +1,22 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+    id 'io.quarkus'
+}
+
+dependencies {
+    implementation project(':user-entity-core')
+    implementation project(':user-entity-external:user-entity-external-database')
+
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    implementation("io.quarkus:quarkus-rest-client-jackson")
+    implementation("io.quarkus:quarkus-resteasy")
+    implementation("io.quarkus:quarkus-resteasy-jackson")
+    implementation("io.quarkus:quarkus-smallrye-openapi")
+    implementation("io.quarkus:quarkus-smallrye-fault-tolerance")
+
+    implementation("io.quarkus:quarkus-azure-functions-http:$quarkusAzureFunctionsHttpVersion")
+
+    testImplementation("io.rest-assured:rest-assured")
+    testImplementation("io.quarkus:quarkus-junit5")
+}
