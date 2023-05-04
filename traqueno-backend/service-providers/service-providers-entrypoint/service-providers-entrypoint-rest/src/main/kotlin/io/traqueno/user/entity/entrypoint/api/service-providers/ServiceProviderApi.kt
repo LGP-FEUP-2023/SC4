@@ -1,4 +1,4 @@
-package io.traqueno.service.providers.entrypoint.api.user.providers
+package io.traqueno.service.providers.entrypoint.api.service.providers
 
 import io.traqueno.user.entity.core.service.UserAuthService
 import io.traqueno.user.entity.entrypoint.api.auth.model.GetUserResponse

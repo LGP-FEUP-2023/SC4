@@ -1,4 +1,4 @@
-package io.traqueno.user.entity.database.entity
+package io.traqueno.service.providers.database.entity
 
 data class ServiceProviderDBO(
     val id: UUID,

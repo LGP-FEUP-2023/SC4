@@ -1,4 +1,4 @@
-package io.traqueno.user.entity.core
+package io.traqueno.service.providers.entity.core
 
 import de.mkammerer.argon2.Argon2
 import de.mkammerer.argon2.Argon2Factory

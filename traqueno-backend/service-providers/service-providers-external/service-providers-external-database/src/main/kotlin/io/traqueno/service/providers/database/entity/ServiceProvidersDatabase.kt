@@ -1,4 +1,4 @@
-package io.traqueno.user.entity.database.entity
+package io.traqueno.service.providers.database.entity
 
 import com.mongodb.client.MongoCollection
 import io.traqueno.user.entity.core.external.IUserAuthDatabase

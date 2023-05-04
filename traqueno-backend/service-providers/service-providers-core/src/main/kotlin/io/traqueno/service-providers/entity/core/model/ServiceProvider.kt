@@ -1,4 +1,4 @@
-package io.traqueno.user.entity.core.model
+package io.traqueno.service.providers.entity.core.model
 
 import java.util.*
 

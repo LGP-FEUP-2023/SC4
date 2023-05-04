@@ -13,8 +13,8 @@ import javax.ws.rs.core.Application
 @OpenAPIDefinition(
     info = Info(
         version = "0.0.1",
-        title = "User-Entity",
-        description = "This service provides service providers manipulation."
+        title = "Service-Providers",
+        description = "This service manipulate with service providers."
     ),
     servers = [
         Server(

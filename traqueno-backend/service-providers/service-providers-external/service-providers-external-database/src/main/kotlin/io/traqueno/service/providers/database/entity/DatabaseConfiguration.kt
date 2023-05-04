@@ -1,4 +1,4 @@
-package io.traqueno.user.entity.database.entity
+package io.traqueno.service.providers.database.entity
 
 import com.mongodb.client.MongoCollection
 import org.eclipse.microprofile.config.inject.ConfigProperty
@@ -15,10 +15,10 @@ class DatabaseConfiguration {
         @ConfigProperty(name = "mongo.database.url") mongoDatabaseUrl: String,
         @ConfigProperty(name = "mongo.database.name") mongoDatabaseName: String,
         @ConfigProperty(name = "mongo.database.collection.name") mongoDatabaseCollectionName: String
-    ): MongoCollection<UserDBO> {
+    ): MongoCollection<ServiceProviderDBO> {
         return KMongo
             .createClient(mongoDatabaseUrl)
             .getDatabase(mongoDatabaseName)
-            .getCollection<UserDBO>(mongoDatabaseCollectionName)
+            .getCollection<ServiceProviderDBO>(mongoDatabaseCollectionName)
     }
 }

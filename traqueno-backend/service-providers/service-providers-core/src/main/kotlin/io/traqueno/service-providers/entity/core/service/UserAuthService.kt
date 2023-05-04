@@ -1,20 +1,16 @@
-package io.traqueno.user.entity.core.service
+package io.traqueno.service.providers.entity.core.service
 
-import io.traqueno.user.entity.core.external.IUserAuthDatabase
-import io.traqueno.user.entity.core.model.User
-import io.traqueno.user.entity.core.security.JwtUtils
-import io.traqueno.user.entity.core.security.PasswordUtils
+import io.traqueno.service.providers.entity.core.service.IServiceProvidersDatabase
+import io.traqueno.service.providers.entity.core.model.Contact
+import io.traqueno.service.providers.entity.core.model.ServiceProvider
 import io.quarkus.security.ForbiddenException
 import java.util.*
 import javax.enterprise.context.ApplicationScoped
 
 @ApplicationScoped
-class UserAuthService(
-    private val userAuthDatabase: IUserAuthDatabase,
-    private val passwordUtils: PasswordUtils,
-    private val jwtUtils: JwtUtils,
+class ServiceProvidersService(
+    private val serviceProviderDatabase: IServiceProvidersDatabase
 ) {
-
     fun register(firstName: String, lastName: String, email: String, password: String) {
         userAuthDatabase.getUserByEmail(email)?.let {
             throw ForbiddenException("Email '$email' as already been registered")

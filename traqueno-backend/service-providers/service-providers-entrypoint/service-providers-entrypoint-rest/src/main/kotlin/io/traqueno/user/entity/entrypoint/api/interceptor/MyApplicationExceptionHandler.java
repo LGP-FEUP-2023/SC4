@@ -1,4 +1,4 @@
-package io.traqueno.service.providers.entrypoint.api.interceptor
+package io.traqueno.service.providers.entrypoint.api.interceptor;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;

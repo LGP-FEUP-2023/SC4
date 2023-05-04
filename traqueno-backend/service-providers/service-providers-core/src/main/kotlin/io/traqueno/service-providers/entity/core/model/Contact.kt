@@ -1,4 +1,4 @@
-package io.traqueno.user.entity.core.model
+package io.traqueno.service.providers.entity.core.model
 
 import java.util.*
 
@@ -9,10 +9,10 @@ data class Contact(
     var socialNetworks: SocialNetwork[]
 )
 
-data class SocialNetwork{
+data class SocialNetwork(
     val socialNetwork: SocialNetworkType,
     val URL: String
-}
+)
 
 enum class SocialNetworkType{
     FACEBOOK,
