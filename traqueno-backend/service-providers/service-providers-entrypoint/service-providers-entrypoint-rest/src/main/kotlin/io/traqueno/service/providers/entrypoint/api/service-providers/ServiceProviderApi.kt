@@ -18,27 +18,27 @@ class ServiceProviderApi(
     @Path("/v1/categories")
     @Produces(MediaType.APPLICATION_JSON)
     fun getAllCategories(): Array<ServiceCategory> {
-        throw NotImplementedError();
+        throw NotImplementedError()
     }
 
     @GET
     @Path("/v1/serviceProviders")
     @Produces(MediaType.APPLICATION_JSON)
     fun getAllServiceProviders(): Array<ServiceProvider> {
-        throw NotImplementedError();
+        throw NotImplementedError()
     }
 
     @GET
     @Path("/v1/serviceProviders/{serviceProviderId}")
     @Produces(MediaType.APPLICATION_JSON)
     fun getServiceProvider(@PathParam("serviceProviderId") serviceProviderId: String): ServiceProvider? {
-        throw NotImplementedError();
+        throw NotImplementedError()
     }
 
     @GET
     @Path("/v1/serviceProviders/{serviceProviderId}/services")
     @Produces(MediaType.APPLICATION_JSON)
     fun getServices(@PathParam("serviceProviderId") serviceProviderId: String): Array<Service> {
-        throw NotImplementedError();
+        throw NotImplementedError()
     }
 }
