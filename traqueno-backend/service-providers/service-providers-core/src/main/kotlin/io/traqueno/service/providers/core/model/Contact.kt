@@ -12,7 +12,7 @@ data class Contact(
 
 data class SocialNetwork(
     val socialNetwork: SocialNetworkType,
-    val url: URL
+    val url: String
 )
 
 enum class SocialNetworkType{

@@ -4,23 +4,18 @@ import java.util.*
 
 data class ServiceProvider(
     val id: UUID,
-    var domain: ServiceDomain,
-    var topic: ServiceTopic,
+    val name: String,
+    var category: ServiceCategory,
     var contact: Contact,
-    var openingHours: OpeningHours
+    var location: Location,
+    var openingHours: OpeningHours,
+    var description: String
 )
-enum class ServiceDomain{
+enum class ServiceCategory{
     HOME,
     CAR,
     HEALTH,
     BEAUTY
-}
-
-enum class ServiceTopic{
-    PLUMBER,
-    CAR_MECHANIC,
-    DENTIST,
-    HAIRDRESSER
 }
 data class OpeningHours(
     val monday: Array<Interval>?,
