@@ -1,17 +1,1 @@
-pluginManagement {
-    repositories {
-        mavenCentral()
-        gradlePluginPortal()
-    }
-
-    plugins {
-        id 'org.jetbrains.kotlin.jvm' version "${kotlinPluginVersion}"
-        id 'io.quarkus' version "$quarkusPluginVersion"
-    }
-}
-
 rootProject.name = 'service-providers'
-
-include ':service-providers-core'
-include ':service-providers-entrypoint:service-providers-entrypoint-rest'
-include ':service-providers-external:service-providers-external-database'

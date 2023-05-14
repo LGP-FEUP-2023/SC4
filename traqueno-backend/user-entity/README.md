@@ -1,15 +1,4 @@
-# Dead Man Switch - Backend
-
-## Modules
-
-### user-entity-core
-For most of the business logic
-
-### user-entity-entrypoint:user-entity-entrypoint-rest
-This should contain all the logic of the restapi, and will usually be the entrypoint for the application
-
-### user-entity-external:user-entity-external-database
-database access object and logic should live here
+# Traqueno - Backend
 
 ### Running the application in dev mode
 
