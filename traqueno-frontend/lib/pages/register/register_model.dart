@@ -12,8 +12,11 @@ class RegisterModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for emailAddress widget.
-  TextEditingController? emailAddressController;
-  String? Function(BuildContext, String?)? emailAddressControllerValidator;
+  TextEditingController? emailAddressController1;
+  String? Function(BuildContext, String?)? emailAddressController1Validator;
+  // State field(s) for emailAddress widget.
+  TextEditingController? emailAddressController2;
+  String? Function(BuildContext, String?)? emailAddressController2Validator;
   // State field(s) for password widget.
   TextEditingController? passwordController;
   late bool passwordVisibility;
@@ -31,7 +34,8 @@ class RegisterModel extends FlutterFlowModel {
   }
 
   void dispose() {
-    emailAddressController?.dispose();
+    emailAddressController1?.dispose();
+    emailAddressController2?.dispose();
     passwordController?.dispose();
     passwordConfirmController?.dispose();
   }

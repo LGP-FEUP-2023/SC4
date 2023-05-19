@@ -68,18 +68,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : LoginWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : LoginWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
         ),
         FFRoute(
-          name: 'HomePage',
+          name: 'homePage',
           path: '/homePage',
-          builder: (context, params) => HomePageWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'homePage')
+              : HomePageWidget(),
         ),
         FFRoute(
           name: 'login',
@@ -90,6 +92,30 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'register',
           path: '/register',
           builder: (context, params) => RegisterWidget(),
+        ),
+        FFRoute(
+          name: 'serviceList',
+          path: '/serviceList',
+          builder: (context, params) => ServiceListWidget(),
+        ),
+        FFRoute(
+          name: 'favorites',
+          path: '/favorites',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'favorites')
+              : FavoritesWidget(),
+        ),
+        FFRoute(
+          name: 'profile',
+          path: '/profile',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'profile')
+              : ProfileWidget(),
+        ),
+        FFRoute(
+          name: 'serviceDetail',
+          path: '/serviceDetail',
+          builder: (context, params) => ServiceDetailWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,
@@ -274,13 +300,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      color: FlutterFlowTheme.of(context).primary,
-                    ),
+              ? Container(
+                  color: Color(0xFFECECED),
+                  child: Image.asset(
+                    'assets/images/traq_lauch.png',
+                    fit: BoxFit.contain,
                   ),
                 )
               : page;

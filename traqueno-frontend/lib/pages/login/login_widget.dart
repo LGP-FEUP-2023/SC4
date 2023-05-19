@@ -64,21 +64,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          if (Theme.of(context).brightness == Brightness.dark)
-                            Image.network(
-                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/template-screens-hpce0u/assets/xofl99y11az0/@3xlogo_primary_color_white.png',
-                              width: 242.0,
-                              height: 60.0,
-                              fit: BoxFit.fitWidth,
-                            ),
-                        ],
+                        children: [],
                       ),
                     ),
                     Text(
                       'Welcome Back!',
                       style: FlutterFlowTheme.of(context).displaySmall.override(
-                            fontFamily: 'Outfit',
+                            fontFamily: 'Ubuntu',
                             color: Color(0xFFFF0000),
                             fontSize: 32.0,
                             fontWeight: FontWeight.w500,
@@ -90,7 +82,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       child: Text(
                         'Use the form below to access your account.',
                         style: FlutterFlowTheme.of(context).bodySmall.override(
-                              fontFamily: 'Outfit',
+                              fontFamily: 'Ubuntu',
                               color: Color(0xFF57636C),
                               fontSize: 14.0,
                               fontWeight: FontWeight.normal,
@@ -167,7 +159,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Ubuntu',
                                       color: Color(0xFF0F1113),
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
@@ -262,7 +254,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Ubuntu',
                                     color: Color(0xFF0F1113),
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
@@ -297,7 +289,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodySmall
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Ubuntu',
                                     color: Color(0xFF57636C),
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
@@ -311,18 +303,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           ),
                           FFButtonWidget(
                             onPressed: () async {
-                              GoRouter.of(context).prepareAuthEvent();
-
-                              final user = await authManager.signInWithEmail(
-                                context,
-                                _model.emailAddressController.text,
-                                _model.passwordController.text,
-                              );
-                              if (user == null) {
-                                return;
-                              }
-
-                              context.goNamedAuth('HomePage', mounted);
+                              context.pushNamed('homePage');
                             },
                             text: 'Login',
                             options: FFButtonOptions(
@@ -336,7 +317,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Ubuntu',
                                     color: Colors.white,
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.w500,
@@ -363,7 +344,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             textAlign: TextAlign.center,
                             style:
                                 FlutterFlowTheme.of(context).bodySmall.override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Ubuntu',
                                       color: Color(0xFF57636C),
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
@@ -392,7 +373,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 return;
                               }
 
-                              context.goNamedAuth('HomePage', mounted);
+                              context.goNamedAuth('homePage', mounted);
                             },
                             child: Container(
                               width: 50.0,
@@ -429,7 +410,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 return;
                               }
 
-                              context.goNamedAuth('HomePage', mounted);
+                              context.goNamedAuth('homePage', mounted);
                             },
                             child: Container(
                               width: 50.0,
@@ -468,7 +449,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Ubuntu',
                                   color: Color(0xFF0F1113),
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.normal,
@@ -490,7 +471,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Ubuntu',
                                     color: Color(0xFFFFA5A5),
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.normal,
