@@ -3,14 +3,13 @@ package io.traqueno.user.entity.controller
 import io.traqueno.user.entity.exception.ApiException
 import io.traqueno.user.entity.request.LoginRequest
 import io.traqueno.user.entity.request.RegisterRequest
+import io.traqueno.user.entity.response.GetUserResponse
 import io.traqueno.user.entity.response.LoginResponse
 import io.traqueno.user.entity.service.HashService
 import io.traqueno.user.entity.service.TokenService
 import io.traqueno.user.entity.service.UserService
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
 
 /**
  * This controller handles login and register requests.
@@ -54,5 +53,21 @@ class UserController(
         return LoginResponse(
             token = tokenService.createToken(savedUser),
         )
+    }
+
+    @GetMapping("/v1/user/all")
+    fun findAllUsers(): ResponseEntity<List<GetUserResponse>> {
+        return userService.findAllUsers();
+
+    }
+
+    @GetMapping("/v1/user/{id}")
+    fun findUserById(@PathVariable id: String): ResponseEntity<GetUserResponse> {
+        val employee = userService.findById(id)
+
+        return ResponseEntity
+            .ok(
+                GetUserResponse.fromEntity(employee)
+            )
     }
 }

@@ -3,6 +3,7 @@ package io.traqueno.service.provider.entity.controller
 import io.traqueno.service.provider.entity.exception.ApiException
 import io.traqueno.service.provider.entity.model.ServiceProvider
 import io.traqueno.service.provider.entity.request.ServiceProviderRequest
+import io.traqueno.service.provider.entity.response.CategoriesResponse
 import io.traqueno.service.provider.entity.response.ServiceProviderResponse
 import io.traqueno.service.provider.entity.service.ServiceProviderService
 import org.springframework.http.ResponseEntity
@@ -47,6 +48,16 @@ class ServiceProviderController(
         val serviceProvider = serviceProviderService.findById(id)
         return if (serviceProvider != null) ResponseEntity.ok(serviceProvider) else ResponseEntity
             .notFound().build()
+    }
+
+    @GetMapping("/v1/serviceprovider/category/{category}")
+    fun findAllServiceProvidersByCategory(@PathVariable("category") category: String): ResponseEntity<List<ServiceProviderResponse>> {
+        return serviceProviderService.findAllByCategoryEquals(category);
+    }
+
+    @GetMapping("/v1/serviceprovider/categories/all")
+    fun findAllCategories(): ResponseEntity<List<CategoriesResponse>> {
+        return serviceProviderService.findAllCategories();
     }
 
 }

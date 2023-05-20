@@ -1,9 +1,11 @@
 package io.traqueno.user.entity.service
 
+import io.traqueno.user.entity.exception.NotFoundException
 import io.traqueno.user.entity.model.User
 import io.traqueno.user.entity.repository.UserRepository
 import io.traqueno.user.entity.request.RegisterRequest
-import org.springframework.data.repository.findByIdOrNull
+import io.traqueno.user.entity.response.GetUserResponse
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 import java.util.*
 
@@ -23,9 +25,8 @@ class UserService(
             )
         )
 
-    fun findById(id: String): User? {
-        return userRepository.findByIdOrNull(id)
-    }
+    fun findById(id: String): User =
+        userRepository.findById(id).orElseThrow { NotFoundException("User with id $id not found") }
 
     fun findByEmail(email: String): User? {
         return userRepository.findByEmail(email);
@@ -33,6 +34,14 @@ class UserService(
 
     fun existByEmail(email: String): Boolean {
         return userRepository.existsByEmail(email);
+    }
+
+    fun findAllUsers(): ResponseEntity<List<GetUserResponse>> {
+        val users = userRepository.findAll()
+        return ResponseEntity
+            .ok(
+                users.map { GetUserResponse.fromEntity(it) }
+            )
     }
 
 }

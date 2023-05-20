@@ -7,7 +7,7 @@ import java.util.*
 @Document("user-entity")
 data class User(
     @Id
-    val id: String? = null,
+    val id: String,
     var firstName: String,
     var lastName: String,
     var email: String,

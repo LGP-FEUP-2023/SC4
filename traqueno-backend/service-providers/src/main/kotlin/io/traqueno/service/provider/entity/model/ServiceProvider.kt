@@ -9,18 +9,12 @@ data class ServiceProvider(
     @Id
     val id: String,
     val name: String,
-    var category: ServiceCategory,
+    var category: ServiceProviderCategory,
     var contact: Contact,
     var location: Location,
     var openingHours: OpeningHours,
     var description: String
 )
-enum class ServiceCategory{
-    HOME,
-    CAR,
-    HEALTH,
-    BEAUTY
-}
 data class OpeningHours(
     val monday: Array<Interval>?,
     val tuesday: Array<Interval>?,
