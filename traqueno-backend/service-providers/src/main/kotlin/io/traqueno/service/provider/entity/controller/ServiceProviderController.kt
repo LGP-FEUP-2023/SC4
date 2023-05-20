@@ -25,7 +25,7 @@ class ServiceProviderController(
             description = payload.description,
             contact = payload.contact,
             openingHours = payload.openingHours,
-            category = payload.category,
+            categoryId = payload.categoryId,
             location = payload.location,
         )
 
@@ -53,11 +53,6 @@ class ServiceProviderController(
     @GetMapping("/v1/serviceprovider/category/{category}")
     fun findAllServiceProvidersByCategory(@PathVariable("category") category: String): ResponseEntity<List<ServiceProviderResponse>> {
         return serviceProviderService.findAllByCategoryEquals(category);
-    }
-
-    @GetMapping("/v1/serviceprovider/categories/all")
-    fun findAllCategories(): ResponseEntity<List<CategoriesResponse>> {
-        return serviceProviderService.findAllCategories();
     }
 
 }

@@ -9,11 +9,11 @@ data class ServiceProvider(
     @Id
     val id: String,
     val name: String,
-    var category: ServiceProviderCategory,
     var contact: Contact,
     var location: Location,
     var openingHours: OpeningHours,
-    var description: String
+    var description: String,
+    var category: ServiceProviderCategory?
 )
 data class OpeningHours(
     val monday: Array<Interval>?,
