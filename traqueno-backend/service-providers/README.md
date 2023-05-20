@@ -1,4 +1,15 @@
-# Traqueno - Backend
+# Dead Man Switch - Backend
+
+## Modules
+
+### service-providers-core
+For most of the business logic
+
+### service-providers-entrypoint:service-providers-entrypoint-rest
+This should contain all the logic of the restapi, and will usually be the entrypoint for the application
+
+### service-providers-external:service-providers-external-database
+database access object and logic should live here
 
 ### Running the application in dev mode
 
