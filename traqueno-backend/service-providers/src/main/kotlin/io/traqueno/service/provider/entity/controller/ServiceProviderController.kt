@@ -55,9 +55,4 @@ class ServiceProviderController(
         return serviceProviderService.findAllByCategoryEquals(category);
     }
 
-    @GetMapping("/v1/serviceprovider/categories/all")
-    fun findAllCategories(): ResponseEntity<List<CategoriesResponse>> {
-        return serviceProviderService.findAllCategories();
-    }
-
 }

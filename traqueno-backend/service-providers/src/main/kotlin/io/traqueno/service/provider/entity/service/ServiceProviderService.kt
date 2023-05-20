@@ -56,13 +56,4 @@ class ServiceProviderService(
             )
     }
 
-    fun findAllCategories(): ResponseEntity<List<CategoriesResponse>> {
-        val serviceProviderCategories = serviceProviderCategoryRepository.findAll()
-
-        return ResponseEntity
-            .ok(
-                serviceProviderCategories.map { CategoriesResponse.fromEntity(it) }
-            )
-    }
-
 }
