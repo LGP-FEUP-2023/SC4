@@ -25,7 +25,7 @@ class ServiceProviderController(
             description = payload.description,
             contact = payload.contact,
             openingHours = payload.openingHours,
-            category = payload.category,
+            categoryId = payload.categoryId,
             location = payload.location,
         )
 

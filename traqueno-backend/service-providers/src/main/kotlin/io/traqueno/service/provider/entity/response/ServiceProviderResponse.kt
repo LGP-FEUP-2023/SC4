@@ -5,7 +5,7 @@ import io.traqueno.service.provider.entity.model.*
 class ServiceProviderResponse(
     val id: String,
     val name: String,
-    val category: ServiceProviderCategory,
+    val category: ServiceProviderCategory?,
     val contact: Contact,
     var location: Location,
     var openingHours: OpeningHours,
