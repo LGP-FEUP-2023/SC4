@@ -25,6 +25,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ProfileModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -132,7 +134,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   ),
                                   Align(
                                     alignment:
-                                        AlignmentDirectional(-0.58, -0.97),
+                                        AlignmentDirectional(-1.02, -1.39),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           24.0, 140.0, 0.0, 0.0),
@@ -141,22 +143,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           columnGetUserByIDResponse.jsonBody,
                                           r'''$..firstName''',
                                         ).toString(),
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .override(
-                                              fontFamily: 'Ubuntu',
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment:
-                                        AlignmentDirectional(-1.01, -1.62),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 140.0, 0.0, 0.0),
-                                      child: Text(
-                                        'hey,',
+                                        textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .headlineMedium
                                             .override(

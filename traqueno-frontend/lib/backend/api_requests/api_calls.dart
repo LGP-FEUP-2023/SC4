@@ -148,6 +148,31 @@ class RegisterCall {
   }
 }
 
+class GetServicesProviderByCategoryCall {
+  static Future<ApiCallResponse> call({
+    String? id = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get Services Provider by Category',
+      apiUrl:
+          'https://service-provider.blackforest-8c6cc863.northeurope.azurecontainerapps.io/api/service-provider-entity/v1/serviceprovider/category/${id}',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic all(dynamic response) => getJsonField(
+        response,
+        r'''$''',
+        true,
+      );
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

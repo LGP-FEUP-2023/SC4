@@ -25,6 +25,8 @@ class _ResumeBookWidgetState extends State<ResumeBookWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ResumeBookModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

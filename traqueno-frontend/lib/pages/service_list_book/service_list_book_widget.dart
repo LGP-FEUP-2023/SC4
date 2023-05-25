@@ -25,6 +25,8 @@ class _ServiceListBookWidgetState extends State<ServiceListBookWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ServiceListBookModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

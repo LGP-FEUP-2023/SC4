@@ -25,6 +25,8 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => FavoritesModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

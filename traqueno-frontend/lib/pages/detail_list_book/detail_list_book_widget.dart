@@ -25,6 +25,8 @@ class _DetailListBookWidgetState extends State<DetailListBookWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DetailListBookModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

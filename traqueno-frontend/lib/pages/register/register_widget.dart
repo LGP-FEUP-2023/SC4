@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -29,10 +30,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
     super.initState();
     _model = createModel(context, () => RegisterModel());
 
-    _model.emailAddressController1 ??= TextEditingController();
-    _model.emailAddressController2 ??= TextEditingController();
+    _model.nameController ??= TextEditingController();
+    _model.emailAddressController ??= TextEditingController();
     _model.passwordController ??= TextEditingController();
-    _model.passwordConfirmController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -69,7 +70,17 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: [],
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/Brandmark.png',
+                              width: 200.0,
+                              height: 134.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     Text(
@@ -106,7 +117,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 16.0, 0.0, 0.0),
                               child: TextFormField(
-                                controller: _model.emailAddressController1,
+                                controller: _model.nameController,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelText: 'Name',
@@ -170,8 +181,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       fontWeight: FontWeight.normal,
                                     ),
                                 maxLines: null,
-                                validator: _model
-                                    .emailAddressController1Validator
+                                validator: _model.nameControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -181,7 +191,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -191,7 +201,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 16.0, 0.0, 0.0),
                               child: TextFormField(
-                                controller: _model.emailAddressController2,
+                                controller: _model.emailAddressController,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelText: 'Email Address',
@@ -256,7 +266,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                     ),
                                 maxLines: null,
                                 validator: _model
-                                    .emailAddressController2Validator
+                                    .emailAddressControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -361,83 +371,6 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                       child: Container(
                         decoration: BoxDecoration(),
-                        child: TextFormField(
-                          controller: _model.passwordConfirmController,
-                          obscureText: !_model.passwordConfirmVisibility,
-                          decoration: InputDecoration(
-                            labelText: 'Confirm Password',
-                            labelStyle:
-                                FlutterFlowTheme.of(context).bodySmall.override(
-                                      fontFamily: 'Outfit',
-                                      color: Color(0xFF57636C),
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                            hintText: 'Enter your email here...',
-                            hintStyle:
-                                FlutterFlowTheme.of(context).bodySmall.override(
-                                      fontFamily: 'Outfit',
-                                      color: Color(0xFF57636C),
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0xFFF1F4F8),
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(40.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(40.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(40.0),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(40.0),
-                            ),
-                            filled: true,
-                            fillColor: Colors.white,
-                            contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 24.0, 24.0, 24.0),
-                            suffixIcon: InkWell(
-                              onTap: () => setState(
-                                () => _model.passwordConfirmVisibility =
-                                    !_model.passwordConfirmVisibility,
-                              ),
-                              focusNode: FocusNode(skipTraversal: true),
-                              child: Icon(
-                                _model.passwordConfirmVisibility
-                                    ? Icons.visibility_outlined
-                                    : Icons.visibility_off_outlined,
-                                color: Color(0xFF57636C),
-                                size: 22.0,
-                              ),
-                            ),
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Ubuntu',
-                                    color: Color(0xFF0F1113),
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                          validator: _model.passwordConfirmControllerValidator
-                              .asValidator(context),
-                        ),
                       ),
                     ),
                     Padding(
@@ -448,8 +381,45 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           FFButtonWidget(
-                            onPressed: () {
-                              print('Button-Login pressed ...');
+                            onPressed: () async {
+                              var _shouldSetState = false;
+                              _model.apiResultpta = await RegisterCall.call(
+                                firstName: _model.nameController.text,
+                                lastName: _model.nameController.text,
+                                email: _model.emailAddressController.text,
+                                password: _model.passwordController.text,
+                              );
+                              _shouldSetState = true;
+                              if ((_model.apiResultpta?.succeeded ?? true)) {
+                                FFAppState().userid = getJsonField(
+                                  (_model.apiResultpta?.jsonBody ?? ''),
+                                  r'''$..id''',
+                                ).toString();
+                                FFAppState().token = getJsonField(
+                                  (_model.apiResultpta?.jsonBody ?? ''),
+                                  r'''$..token''',
+                                ).toString();
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Error on user registration',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor: Color(0xFFFF0000),
+                                  ),
+                                );
+                                if (_shouldSetState) setState(() {});
+                                return;
+                              }
+
+                              context.pushNamed('homePage');
+
+                              if (_shouldSetState) setState(() {});
                             },
                             text: 'Create Account',
                             options: FFButtonOptions(

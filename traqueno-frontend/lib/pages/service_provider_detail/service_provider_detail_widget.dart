@@ -29,6 +29,8 @@ class _ServiceProviderDetailWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => ServiceProviderDetailModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

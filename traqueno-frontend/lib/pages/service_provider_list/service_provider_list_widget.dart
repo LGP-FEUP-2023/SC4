@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'service_provider_list_model.dart';
@@ -69,6 +70,8 @@ class _ServiceProviderListWidgetState extends State<ServiceProviderListWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -264,93 +267,97 @@ class _ServiceProviderListWidgetState extends State<ServiceProviderListWidget>
                 ),
               ),
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
-                        child: Container(
-                          width: double.infinity,
-                          constraints: BoxConstraints(
-                            maxWidth: 770.0,
+                child: FutureBuilder<ApiCallResponse>(
+                  future: GetServicesProviderByCategoryCall.call(
+                    id: getJsonField(
+                      widget.serviceData,
+                      r'''$..id''',
+                    ).toString(),
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: SpinKitFadingCube(
+                            color: Color(0xFFFF0000),
+                            size: 50.0,
                           ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 7.0,
-                                color: Color(0x2F1D2429),
-                                offset: Offset(0.0, 3.0),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: Padding(
+                        ),
+                      );
+                    }
+                    final columnGetServicesProviderByCategoryResponse =
+                        snapshot.data!;
+                    return SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 12.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 8.0, 16.0, 4.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Text(
-                                        getJsonField(
-                                          widget.serviceData,
-                                          r'''$..name''',
-                                        ).toString(),
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleLarge
-                                            .override(
-                                              fontFamily: 'Ubuntu',
-                                              color: Color(0xFF14181B),
-                                              fontSize: 22.0,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 0.0, 16.0, 8.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 2.0, 0.0),
-                                        child: FutureBuilder<ApiCallResponse>(
-                                          future:
-                                              GetServicesProviderCall.call(),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 40.0,
-                                                  height: 40.0,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBtnText,
-                                                  ),
+                            child: Container(
+                              width: double.infinity,
+                              constraints: BoxConstraints(
+                                maxWidth: 770.0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 7.0,
+                                    color: Color(0x2F1D2429),
+                                    offset: Offset(0.0, 3.0),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 12.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 8.0, 16.0, 4.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(
+                                            getJsonField(
+                                              widget.serviceData,
+                                              r'''$..name''',
+                                            ).toString(),
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleLarge
+                                                .override(
+                                                  fontFamily: 'Ubuntu',
+                                                  color: Color(0xFF14181B),
+                                                  fontSize: 22.0,
+                                                  fontWeight: FontWeight.w500,
                                                 ),
-                                              );
-                                            }
-                                            final textGetServicesProviderResponse =
-                                                snapshot.data!;
-                                            return Text(
-                                              (GetServicesProviderCall.all(
-                                                textGetServicesProviderResponse
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 8.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 2.0, 0.0),
+                                            child: Text(
+                                              (GetServicesProviderByCategoryCall
+                                                      .all(
+                                                columnGetServicesProviderByCategoryResponse
                                                     .jsonBody,
                                               ) as List)
                                                   .map<String>(
@@ -367,461 +374,527 @@ class _ServiceProviderListWidgetState extends State<ServiceProviderListWidget>
                                                     fontSize: 14.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
-                                            );
-                                          },
-                                        ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Text(
+                                              'services avalible',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Ubuntu',
+                                                    color: Color(0xFF57636C),
+                                                    fontSize: 14.0,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      Expanded(
-                                        child: Text(
-                                          'services avalible',
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily: 'Ubuntu',
-                                                color: Color(0xFF57636C),
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.w500,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 4.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          FFButtonWidget(
+                                            onPressed: () {
+                                              print('Button pressed ...');
+                                            },
+                                            text: 'List view',
+                                            options: FFButtonOptions(
+                                              width: 60.0,
+                                              height: 30.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color: Color(0xFFFF0000),
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryBackground,
+                                                      ),
+                                              elevation: 0.0,
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
                                               ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 0.0, 16.0, 4.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      FFButtonWidget(
-                                        onPressed: () {
-                                          print('Button pressed ...');
-                                        },
-                                        text: 'List view',
-                                        options: FFButtonOptions(
-                                          width: 60.0,
-                                          height: 30.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: Color(0xFFFF0000),
-                                          textStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .bodySmall
-                                              .override(
-                                                fontFamily: 'Poppins',
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 0.0, 0.0, 0.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () {
+                                                print('Button pressed ...');
+                                              },
+                                              text: 'Map view',
+                                              options: FFButtonOptions(
+                                                width: 60.0,
+                                                height: 30.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
+                                                        .secondaryBackground,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall,
+                                                elevation: 0.0,
+                                                borderSide: BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
                                               ),
-                                          elevation: 0.0,
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            8.0, 0.0, 0.0, 0.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () {
-                                            print('Button pressed ...');
-                                          },
-                                          text: 'Map view',
-                                          options: FFButtonOptions(
-                                            width: 60.0,
-                                            height: 30.0,
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmall,
-                                            elevation: 0.0,
-                                            borderSide: BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1.0,
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
                                           ),
-                                        ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      FutureBuilder<ApiCallResponse>(
-                        future: (_model.apiRequestCompleter ??=
-                                Completer<ApiCallResponse>()
-                                  ..complete(GetServicesProviderCall.call()))
-                            .future,
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 30.0, 0.0, 0.0),
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: SpinKitFadingCube(
-                                    color: Color(0xFFFF0000),
-                                    size: 50.0,
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            );
-                          }
-                          final listViewGetServicesProviderResponse =
-                              snapshot.data!;
-                          return Builder(
-                            builder: (context) {
-                              final servicesProviderData =
-                                  GetServicesProviderCall.all(
-                                        listViewGetServicesProviderResponse
-                                            .jsonBody,
-                                      )?.toList() ??
-                                      [];
-                              return InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed('serviceProviderDetail');
-                                },
-                                child: RefreshIndicator(
-                                  onRefresh: () async {
-                                    setState(() =>
-                                        _model.apiRequestCompleter = null);
-                                    await _model.waitForApiRequestCompleted();
-                                  },
-                                  child: ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: servicesProviderData.length,
-                                    itemBuilder:
-                                        (context, servicesProviderDataIndex) {
-                                      final servicesProviderDataItem =
-                                          servicesProviderData[
-                                              servicesProviderDataIndex];
-                                      return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 10.0),
-                                        child: Container(
-                                          width: double.infinity,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Color(0x4E95A1AC),
-                                                offset: Offset(0.0, 1.0),
-                                              )
-                                            ],
-                                            borderRadius:
-                                                BorderRadius.circular(6.0),
-                                            border: Border.all(
-                                              color: Color(0x4E95A1AC),
-                                              width: 1.0,
-                                            ),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 8.0, 12.0, 8.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
-                                              children: [
-                                                ClipRRect(
+                            ),
+                          ),
+                          FutureBuilder<ApiCallResponse>(
+                            future: (_model.apiRequestCompleter ??= Completer<
+                                    ApiCallResponse>()
+                                  ..complete(
+                                      GetServicesProviderByCategoryCall.call(
+                                    id: getJsonField(
+                                      widget.serviceData,
+                                      r'''$..id''',
+                                    ).toString(),
+                                  )))
+                                .future,
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 30.0, 0.0, 0.0),
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: SpinKitFadingCube(
+                                        color: Color(0xFFFF0000),
+                                        size: 50.0,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }
+                              final listViewGetServicesProviderByCategoryResponse =
+                                  snapshot.data!;
+                              return Builder(
+                                builder: (context) {
+                                  final serviceProviderData =
+                                      GetServicesProviderByCategoryCall.all(
+                                            columnGetServicesProviderByCategoryResponse
+                                                .jsonBody,
+                                          )?.toList() ??
+                                          [];
+                                  return InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context
+                                          .pushNamed('serviceProviderDetail');
+                                    },
+                                    child: RefreshIndicator(
+                                      onRefresh: () async {
+                                        setState(() =>
+                                            _model.apiRequestCompleter = null);
+                                        await _model
+                                            .waitForApiRequestCompleted();
+                                      },
+                                      child: ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: serviceProviderData.length,
+                                        itemBuilder: (context,
+                                            serviceProviderDataIndex) {
+                                          final serviceProviderDataItem =
+                                              serviceProviderData[
+                                                  serviceProviderDataIndex];
+                                          return Visibility(
+                                            visible:
+                                                listViewGetServicesProviderByCategoryResponse
+                                                    .succeeded,
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 0.0, 10.0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color: Color(0x4E95A1AC),
+                                                      offset: Offset(0.0, 1.0),
+                                                    )
+                                                  ],
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          12.0),
-                                                  child: Image.network(
-                                                    getJsonField(
-                                                      servicesProviderDataItem,
-                                                      r'''$..category..imgUrl''',
-                                                    ),
-                                                    width: 90.0,
-                                                    height: 90.0,
-                                                    fit: BoxFit.cover,
+                                                          6.0),
+                                                  border: Border.all(
+                                                    color: Color(0x4E95A1AC),
+                                                    width: 1.0,
                                                   ),
                                                 ),
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                12.0,
-                                                                12.0,
-                                                                12.0,
-                                                                12.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 8.0, 12.0, 8.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceAround,
+                                                    children: [
+                                                      ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12.0),
+                                                        child: Image.network(
                                                           getJsonField(
-                                                            servicesProviderDataItem,
-                                                            r'''$..companyName''',
-                                                          ).toString(),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .titleLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Ubuntu',
-                                                                color: Color(
-                                                                    0xFF14181B),
-                                                                fontSize: 24.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
+                                                            serviceProviderDataItem,
+                                                            r'''$..category..imgUrl''',
+                                                          ),
+                                                          width: 90.0,
+                                                          height: 90.0,
+                                                          fit: BoxFit.cover,
                                                         ),
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Text(
-                                                              getJsonField(
-                                                                servicesProviderDataItem,
-                                                                r'''$..location..streetName''',
-                                                              ).toString(),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Ubuntu',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .accent1,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                  ),
-                                                            ),
-                                                            Flexible(
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            2.0,
-                                                                            0.0),
-                                                                child: Text(
-                                                                  ',',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Ubuntu',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .accent1,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Flexible(
-                                                              child: Text(
+                                                      ),
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      12.0,
+                                                                      12.0,
+                                                                      12.0,
+                                                                      12.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
                                                                 getJsonField(
-                                                                  servicesProviderDataItem,
-                                                                  r'''$..location..city''',
+                                                                  serviceProviderDataItem,
+                                                                  r'''$..companyName''',
                                                                 ).toString(),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyMedium
+                                                                    .titleLarge
                                                                     .override(
                                                                       fontFamily:
                                                                           'Ubuntu',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .accent1,
+                                                                      color: Color(
+                                                                          0xFF14181B),
+                                                                      fontSize:
+                                                                          24.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w500,
                                                                     ),
                                                               ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      7.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceAround,
-                                                            children: [
-                                                              SizedBox(
-                                                                height: 0.0,
-                                                                child:
-                                                                    VerticalDivider(
-                                                                  thickness:
-                                                                      1.0,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .accent4,
-                                                                ),
-                                                              ),
-                                                              Icon(
-                                                                Icons
-                                                                    .location_pin,
-                                                                color: Color(
-                                                                    0xFFFF0000),
-                                                                size: 20.0,
-                                                              ),
-                                                              Text(
-                                                                '300m',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Ubuntu',
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Text(
+                                                                    getJsonField(
+                                                                      serviceProviderDataItem,
+                                                                      r'''$..location..streetName''',
+                                                                    ).toString(),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Ubuntu',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).accent1,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                        ),
+                                                                  ),
+                                                                  Flexible(
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          2.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Text(
+                                                                        ',',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Ubuntu',
+                                                                              color: FlutterFlowTheme.of(context).accent1,
+                                                                              fontWeight: FontWeight.w500,
+                                                                            ),
+                                                                      ),
                                                                     ),
+                                                                  ),
+                                                                  Flexible(
+                                                                    child: Text(
+                                                                      getJsonField(
+                                                                        serviceProviderDataItem,
+                                                                        r'''$..location..city''',
+                                                                      ).toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Ubuntu',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).accent1,
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
-                                                              SizedBox(
-                                                                height: 0.0,
-                                                                child:
-                                                                    VerticalDivider(
-                                                                  thickness:
-                                                                      1.0,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .accent4,
-                                                                ),
-                                                              ),
-                                                              Icon(
-                                                                Icons
-                                                                    .star_outlined,
-                                                                color: Color(
-                                                                    0xFFFF0000),
-                                                                size: 20.0,
-                                                              ),
-                                                              Flexible(
-                                                                child: Text(
-                                                                  random_data
-                                                                      .randomInteger(
-                                                                          0, 5)
-                                                                      .toString(),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Ubuntu',
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            7.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceAround,
+                                                                  children: [
+                                                                    SizedBox(
+                                                                      height:
+                                                                          0.0,
+                                                                      child:
+                                                                          VerticalDivider(
+                                                                        thickness:
+                                                                            1.0,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .accent4,
                                                                       ),
-                                                                ),
-                                                              ),
-                                                              SizedBox(
-                                                                height: 0.0,
-                                                                child:
-                                                                    VerticalDivider(
-                                                                  thickness:
-                                                                      1.0,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .accent4,
-                                                                ),
-                                                              ),
-                                                              Icon(
-                                                                Icons.favorite,
-                                                                color: Color(
-                                                                    0xFFFF0000),
-                                                                size: 20.0,
-                                                              ),
-                                                              Flexible(
-                                                                child: Text(
-                                                                  random_data
-                                                                      .randomInteger(
-                                                                          0, 50)
-                                                                      .toString(),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Ubuntu',
+                                                                    ),
+                                                                    Icon(
+                                                                      Icons
+                                                                          .location_pin,
+                                                                      color: Color(
+                                                                          0xFFFF0000),
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Text(
+                                                                      '300m',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Ubuntu',
+                                                                          ),
+                                                                    ),
+                                                                    SizedBox(
+                                                                      height:
+                                                                          0.0,
+                                                                      child:
+                                                                          VerticalDivider(
+                                                                        thickness:
+                                                                            1.0,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .accent4,
                                                                       ),
-                                                                ),
-                                                              ),
-                                                              SizedBox(
-                                                                height: 0.0,
-                                                                child:
-                                                                    VerticalDivider(
-                                                                  thickness:
-                                                                      1.0,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .accent4,
+                                                                    ),
+                                                                    Icon(
+                                                                      Icons
+                                                                          .star_outlined,
+                                                                      color: Color(
+                                                                          0xFFFF0000),
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Flexible(
+                                                                      child:
+                                                                          Text(
+                                                                        random_data
+                                                                            .randomInteger(0,
+                                                                                5)
+                                                                            .toString(),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Ubuntu',
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                    SizedBox(
+                                                                      height:
+                                                                          0.0,
+                                                                      child:
+                                                                          VerticalDivider(
+                                                                        thickness:
+                                                                            1.0,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .accent4,
+                                                                      ),
+                                                                    ),
+                                                                    Icon(
+                                                                      Icons
+                                                                          .favorite,
+                                                                      color: Color(
+                                                                          0xFFFF0000),
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Flexible(
+                                                                      child:
+                                                                          Text(
+                                                                        random_data
+                                                                            .randomInteger(0,
+                                                                                50)
+                                                                            .toString(),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Ubuntu',
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                    SizedBox(
+                                                                      height:
+                                                                          0.0,
+                                                                      child:
+                                                                          VerticalDivider(
+                                                                        thickness:
+                                                                            1.0,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .accent4,
+                                                                      ),
+                                                                    ),
+                                                                  ],
                                                                 ),
                                                               ),
                                                             ],
                                                           ),
                                                         ),
-                                                      ],
-                                                    ),
+                                                      ),
+                                                      Icon(
+                                                        Icons
+                                                            .keyboard_arrow_right_rounded,
+                                                        color:
+                                                            Color(0xFF57636C),
+                                                        size: 24.0,
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
-                                                Icon(
-                                                  Icons
-                                                      .keyboard_arrow_right_rounded,
-                                                  color: Color(0xFF57636C),
-                                                  size: 24.0,
-                                                ),
-                                              ],
+                                              ).animateOnPageLoad(animationsMap[
+                                                  'containerOnPageLoadAnimation']!),
                                             ),
-                                          ),
-                                        ).animateOnPageLoad(animationsMap[
-                                            'containerOnPageLoadAnimation']!),
-                                      );
-                                    },
-                                  ),
-                                ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  );
+                                },
                               );
                             },
-                          );
-                        },
+                          ),
+                          if (GetServicesProviderByCategoryCall.all(
+                                columnGetServicesProviderByCategoryResponse
+                                    .jsonBody,
+                              ).length <=
+                              0)
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 20.0, 0.0, 5.0),
+                                  child: FaIcon(
+                                    FontAwesomeIcons.sadTear,
+                                    color: FlutterFlowTheme.of(context).accent2,
+                                    size: 70.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          if (GetServicesProviderByCategoryCall.all(
+                                columnGetServicesProviderByCategoryResponse
+                                    .jsonBody,
+                              ).length <=
+                              0)
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 20.0),
+                                  child: Text(
+                                    'No service provider available\n for this category!',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Ubuntu',
+                                          color: FlutterFlowTheme.of(context)
+                                              .gray600,
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                        ],
                       ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ),
             ],

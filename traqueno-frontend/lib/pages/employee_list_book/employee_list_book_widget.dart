@@ -25,6 +25,8 @@ class _EmployeeListBookWidgetState extends State<EmployeeListBookWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EmployeeListBookModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

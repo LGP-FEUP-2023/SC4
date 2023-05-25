@@ -32,6 +32,8 @@ class _ServiceDetailListBookWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => ServiceDetailListBookModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
