@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -44,6 +45,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: Scaffold(
@@ -66,15 +69,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          if (Theme.of(context).brightness == Brightness.dark)
-                            Image.network(
-                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/template-screens-hpce0u/assets/xofl99y11az0/@3xlogo_primary_color_white.png',
-                              width: 242.0,
-                              height: 60.0,
-                              fit: BoxFit.fitWidth,
-                            ),
-                        ],
+                        children: [],
                       ),
                     ),
                     Text(
@@ -453,31 +448,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           FFButtonWidget(
-                            onPressed: () async {
-                              GoRouter.of(context).prepareAuthEvent();
-                              if (_model.passwordController.text !=
-                                  _model.passwordConfirmController.text) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Passwords don\'t match!',
-                                    ),
-                                  ),
-                                );
-                                return;
-                              }
-
-                              final user =
-                                  await authManager.createAccountWithEmail(
-                                context,
-                                _model.emailAddressController1.text,
-                                _model.passwordController.text,
-                              );
-                              if (user == null) {
-                                return;
-                              }
-
-                              context.goNamedAuth('homePage', mounted);
+                            onPressed: () {
+                              print('Button-Login pressed ...');
                             },
                             text: 'Create Account',
                             options: FFButtonOptions(
@@ -547,7 +519,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 return;
                               }
 
-                              context.goNamedAuth('homePage', mounted);
+                              context.goNamedAuth('homePage', context.mounted);
                             },
                             child: Container(
                               width: 50.0,
@@ -584,7 +556,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 return;
                               }
 
-                              context.goNamedAuth('homePage', mounted);
+                              context.goNamedAuth('homePage', context.mounted);
                             },
                             child: Container(
                               width: 50.0,

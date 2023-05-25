@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
@@ -94,9 +95,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => RegisterWidget(),
         ),
         FFRoute(
-          name: 'serviceList',
-          path: '/serviceList',
-          builder: (context, params) => ServiceListWidget(),
+          name: 'serviceProviderList',
+          path: '/serviceProviderList',
+          builder: (context, params) => ServiceProviderListWidget(
+            serviceData: params.getParam('serviceData', ParamType.JSON),
+          ),
         ),
         FFRoute(
           name: 'favorites',
@@ -113,9 +116,41 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : ProfileWidget(),
         ),
         FFRoute(
-          name: 'serviceDetail',
-          path: '/serviceDetail',
-          builder: (context, params) => ServiceDetailWidget(),
+          name: 'serviceProviderDetail',
+          path: '/serviceProviderDetail',
+          builder: (context, params) => ServiceProviderDetailWidget(),
+        ),
+        FFRoute(
+          name: 'serviceListBook',
+          path: '/serviceListBook',
+          builder: (context, params) => ServiceListBookWidget(),
+        ),
+        FFRoute(
+          name: 'detailListBook',
+          path: '/detailListBook',
+          builder: (context, params) => DetailListBookWidget(),
+        ),
+        FFRoute(
+          name: 'serviceDetailListBook',
+          path: '/serviceDetailListBook',
+          builder: (context, params) => ServiceDetailListBookWidget(
+            service: params.getParam('service', ParamType.String),
+          ),
+        ),
+        FFRoute(
+          name: 'employeeListBook',
+          path: '/employeeListBook',
+          builder: (context, params) => EmployeeListBookWidget(),
+        ),
+        FFRoute(
+          name: 'agendaBook',
+          path: '/agendaBook',
+          builder: (context, params) => AgendaBookWidget(),
+        ),
+        FFRoute(
+          name: 'resumeBook',
+          path: '/resumeBook',
+          builder: (context, params) => ResumeBookWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,
@@ -301,10 +336,14 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: Color(0xFFECECED),
-                  child: Image.asset(
-                    'assets/images/traq_lauch.png',
-                    fit: BoxFit.contain,
+                  color: Colors.transparent,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/Brandmark.png',
+                      width: 300.0,
+                      height: 300.0,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 )
               : page;

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'favorites_model.dart';
@@ -35,6 +36,8 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -125,6 +128,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .titleSmall
                                                 .override(
                                                   fontFamily: 'Ubuntu',
+                                                  fontSize: 18.0,
                                                 ),
                                           ),
                                         ],
@@ -138,6 +142,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .bodySmall
                                                 .override(
                                                   fontFamily: 'Ubuntu',
+                                                  fontSize: 16.0,
                                                 ),
                                           ),
                                         ],
@@ -152,6 +157,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .override(
                                                   fontFamily: 'Ubuntu',
                                                   color: Color(0xFFFF0000),
+                                                  fontSize: 16.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -229,6 +235,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .titleSmall
                                                 .override(
                                                   fontFamily: 'Ubuntu',
+                                                  fontSize: 18.0,
                                                 ),
                                           ),
                                         ],
@@ -242,6 +249,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .bodySmall
                                                 .override(
                                                   fontFamily: 'Ubuntu',
+                                                  fontSize: 16.0,
                                                 ),
                                           ),
                                         ],
@@ -256,6 +264,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .override(
                                                   fontFamily: 'Ubuntu',
                                                   color: Color(0xFFFF0000),
+                                                  fontSize: 16.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -333,6 +342,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .titleSmall
                                                 .override(
                                                   fontFamily: 'Ubuntu',
+                                                  fontSize: 18.0,
                                                 ),
                                           ),
                                         ],
@@ -346,6 +356,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .bodySmall
                                                 .override(
                                                   fontFamily: 'Ubuntu',
+                                                  fontSize: 16.0,
                                                 ),
                                           ),
                                         ],
@@ -360,6 +371,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .override(
                                                   fontFamily: 'Ubuntu',
                                                   color: Color(0xFFFF0000),
+                                                  fontSize: 16.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -437,6 +449,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .titleSmall
                                                 .override(
                                                   fontFamily: 'Ubuntu',
+                                                  fontSize: 18.0,
                                                 ),
                                           ),
                                         ],
@@ -450,6 +463,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .bodySmall
                                                 .override(
                                                   fontFamily: 'Ubuntu',
+                                                  fontSize: 16.0,
                                                 ),
                                           ),
                                         ],
@@ -464,6 +478,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .override(
                                                   fontFamily: 'Ubuntu',
                                                   color: Color(0xFFFF0000),
+                                                  fontSize: 16.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -541,6 +556,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .titleSmall
                                                 .override(
                                                   fontFamily: 'Ubuntu',
+                                                  fontSize: 18.0,
                                                 ),
                                           ),
                                         ],
@@ -554,6 +570,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .bodySmall
                                                 .override(
                                                   fontFamily: 'Ubuntu',
+                                                  fontSize: 16.0,
                                                 ),
                                           ),
                                         ],
@@ -568,6 +585,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .override(
                                                   fontFamily: 'Ubuntu',
                                                   color: Color(0xFFFF0000),
+                                                  fontSize: 16.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),

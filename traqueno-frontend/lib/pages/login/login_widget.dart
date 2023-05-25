@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -42,6 +44,8 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: Scaffold(
@@ -64,7 +68,17 @@ class _LoginWidgetState extends State<LoginWidget> {
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: [],
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/Brandmark.png',
+                              width: 200.0,
+                              height: 134.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     Text(
@@ -303,7 +317,42 @@ class _LoginWidgetState extends State<LoginWidget> {
                           ),
                           FFButtonWidget(
                             onPressed: () async {
-                              context.pushNamed('homePage');
+                              var _shouldSetState = false;
+                              _model.apiResultg8e = await LoginCall.call(
+                                email: _model.emailAddressController.text,
+                                password: _model.passwordController.text,
+                              );
+                              _shouldSetState = true;
+                              if ((_model.apiResultg8e?.succeeded ?? true)) {
+                                FFAppState().userid = getJsonField(
+                                  (_model.apiResultg8e?.jsonBody ?? ''),
+                                  r'''$..id''',
+                                ).toString();
+                                FFAppState().token = getJsonField(
+                                  (_model.apiResultg8e?.jsonBody ?? ''),
+                                  r'''$..token''',
+                                ).toString();
+
+                                context.pushNamed('homePage');
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'The email or password is incorrect',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor: Color(0xFFFF0000),
+                                  ),
+                                );
+                                if (_shouldSetState) setState(() {});
+                                return;
+                              }
+
+                              if (_shouldSetState) setState(() {});
                             },
                             text: 'Login',
                             options: FFButtonOptions(
@@ -373,7 +422,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 return;
                               }
 
-                              context.goNamedAuth('homePage', mounted);
+                              context.goNamedAuth('homePage', context.mounted);
                             },
                             child: Container(
                               width: 50.0,
@@ -410,7 +459,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 return;
                               }
 
-                              context.goNamedAuth('homePage', mounted);
+                              context.goNamedAuth('homePage', context.mounted);
                             },
                             child: Container(
                               width: 50.0,
