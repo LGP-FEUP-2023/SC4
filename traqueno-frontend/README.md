@@ -1,10 +1,10 @@
 # traqueno
 
-A new Flutter project.
+A book appointments Flutter project.
 
 ## Getting Started
 
-FlutterFlow projects are built to run on the Flutter _stable_ release.
+Flutter projects are built to run on the Flutter _stable_ release.
 
 ### Getting started continued:
 
