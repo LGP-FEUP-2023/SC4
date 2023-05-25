@@ -1,17 +1,1 @@
-pluginManagement {
-    repositories {
-        mavenCentral()
-        gradlePluginPortal()
-    }
-
-    plugins {
-        id 'org.jetbrains.kotlin.jvm' version "${kotlinPluginVersion}"
-        id 'io.quarkus' version "$quarkusPluginVersion"
-    }
-}
-
 rootProject.name = 'user-entity'
-
-include ':user-entity-core'
-include ':user-entity-entrypoint:user-entity-entrypoint-rest'
-include ':user-entity-external:user-entity-external-database'
