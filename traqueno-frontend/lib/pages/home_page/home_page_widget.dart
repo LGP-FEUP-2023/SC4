@@ -248,130 +248,134 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Expanded(
-                child: FutureBuilder<ApiCallResponse>(
-                  future: GetCategoriesCall.call(),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: SpinKitFadingCube(
-                            color: Color(0xFFFF0000),
-                            size: 50.0,
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                  child: FutureBuilder<ApiCallResponse>(
+                    future: GetCategoriesCall.call(),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: SpinKitFadingCube(
+                              color: Color(0xFFFF0000),
+                              size: 50.0,
+                            ),
                           ),
-                        ),
-                      );
-                    }
-                    final gridViewGetCategoriesResponse = snapshot.data!;
-                    return Builder(
-                      builder: (context) {
-                        final categorieData = GetCategoriesCall.all(
-                              gridViewGetCategoriesResponse.jsonBody,
-                            )?.toList() ??
-                            [];
-                        return GridView.builder(
-                          padding: EdgeInsets.zero,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 1.0,
-                            mainAxisSpacing: 10.0,
-                            childAspectRatio: 1.0,
-                          ),
-                          scrollDirection: Axis.vertical,
-                          itemCount: categorieData.length,
-                          itemBuilder: (context, categorieDataIndex) {
-                            final categorieDataItem =
-                                categorieData[categorieDataIndex];
-                            return Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 12.0, 16.0, 0.0),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed(
-                                    'serviceProviderList',
-                                    queryParams: {
-                                      'serviceData': serializeParam(
-                                        getJsonField(
-                                          categorieDataItem,
-                                          r'''$''',
-                                        ),
-                                        ParamType.JSON,
-                                      ),
-                                    }.withoutNulls,
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType:
-                                            PageTransitionType.leftToRight,
-                                      ),
-                                    },
-                                  );
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 4.0,
-                                        color: Color(0x1F000000),
-                                        offset: Offset(0.0, 2.0),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 0.0, 4.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            getJsonField(
-                                              categorieDataItem,
-                                              r'''$..imgUrl''',
-                                            ),
-                                            width: 140.0,
-                                            height: 140.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                      Flexible(
-                                        child: Text(
+                        );
+                      }
+                      final gridViewGetCategoriesResponse = snapshot.data!;
+                      return Builder(
+                        builder: (context) {
+                          final categorieData = GetCategoriesCall.all(
+                                gridViewGetCategoriesResponse.jsonBody,
+                              )?.toList() ??
+                              [];
+                          return GridView.builder(
+                            padding: EdgeInsets.zero,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 1.0,
+                              mainAxisSpacing: 10.0,
+                              childAspectRatio: 1.0,
+                            ),
+                            scrollDirection: Axis.vertical,
+                            itemCount: categorieData.length,
+                            itemBuilder: (context, categorieDataIndex) {
+                              final categorieDataItem =
+                                  categorieData[categorieDataIndex];
+                              return Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 12.0, 16.0, 0.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'serviceProviderList',
+                                      queryParams: {
+                                        'categoryData': serializeParam(
                                           getJsonField(
                                             categorieDataItem,
-                                            r'''$..name''',
-                                          ).toString(),
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineMedium
-                                              .override(
-                                                fontFamily: 'Ubuntu',
-                                                color: Color(0xFF14181B),
-                                                fontSize: 21.0,
-                                                fontWeight: FontWeight.normal,
-                                              ),
+                                            r'''$''',
+                                          ),
+                                          ParamType.JSON,
                                         ),
-                                      ),
-                                    ],
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.leftToRight,
+                                        ),
+                                      },
+                                    );
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x1F000000),
+                                          offset: Offset(0.0, 2.0),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 0.0, 4.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.network(
+                                              getJsonField(
+                                                categorieDataItem,
+                                                r'''$..imgUrl''',
+                                              ),
+                                              width: 140.0,
+                                              height: 140.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        Flexible(
+                                          child: Text(
+                                            getJsonField(
+                                              categorieDataItem,
+                                              r'''$..name''',
+                                            ).toString(),
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineMedium
+                                                .override(
+                                                  fontFamily: 'Ubuntu',
+                                                  color: Color(0xFF14181B),
+                                                  fontSize: 21.0,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    );
-                  },
+                              );
+                            },
+                          );
+                        },
+                      );
+                    },
+                  ),
                 ),
               ),
             ],

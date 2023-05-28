@@ -18,3 +18,5 @@ export '/pages/employee_list_book/employee_list_book_widget.dart'
     show EmployeeListBookWidget;
 export '/pages/agenda_book/agenda_book_widget.dart' show AgendaBookWidget;
 export '/pages/resume_book/resume_book_widget.dart' show ResumeBookWidget;
+export '/pages/business/home_page_business/home_page_business_widget.dart'
+    show HomePageBusinessWidget;

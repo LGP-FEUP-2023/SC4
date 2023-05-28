@@ -155,12 +155,12 @@ class _AgendaBookWidgetState extends State<AgendaBookWidget> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 10.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 20.0),
                   child: FlutterFlowIconButton(
                     borderColor: Color(0xFFFF0000),
-                    borderRadius: 20.0,
+                    borderRadius: 30.0,
                     borderWidth: 1.0,
-                    buttonSize: 45.0,
+                    buttonSize: 55.0,
                     fillColor: Color(0xFFFF0000),
                     icon: Icon(
                       Icons.chevron_right_sharp,
