@@ -3,7 +3,6 @@ package io.traqueno.service.provider.entity.controller
 import io.traqueno.service.provider.entity.exception.ApiException
 import io.traqueno.service.provider.entity.model.ServiceProvider
 import io.traqueno.service.provider.entity.request.ServiceProviderRequest
-import io.traqueno.service.provider.entity.response.CategoriesResponse
 import io.traqueno.service.provider.entity.response.ServiceProviderResponse
 import io.traqueno.service.provider.entity.service.ServiceProviderService
 import org.springframework.http.ResponseEntity
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.*
 class ServiceProviderController(
     private val serviceProviderService: ServiceProviderService
 ) {
+
     @PostMapping("/v1/serviceprovider/register")
     fun register(@RequestBody payload: ServiceProviderRequest): ResponseEntity<ServiceProviderResponse> {
         if (serviceProviderService.existByName(payload.name)) {
@@ -27,6 +27,8 @@ class ServiceProviderController(
             openingHours = payload.openingHours,
             categoryId = payload.categoryId,
             location = payload.location,
+            services = payload.services,
+            employees = payload.employees
         )
 
         val savedServiceProvider = serviceProviderService.createServiceProvider(serviceProvider);
@@ -52,7 +54,7 @@ class ServiceProviderController(
 
     @GetMapping("/v1/serviceprovider/category/{category}")
     fun findAllServiceProvidersByCategory(@PathVariable("category") category: String): ResponseEntity<List<ServiceProviderResponse>> {
-        return serviceProviderService.findAllByCategoryEquals(category);
+        return serviceProviderService.findAllByCategoryId(category);
     }
 
 }

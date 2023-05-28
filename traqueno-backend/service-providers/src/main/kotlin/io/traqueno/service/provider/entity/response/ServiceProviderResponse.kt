@@ -4,23 +4,27 @@ import io.traqueno.service.provider.entity.model.*
 
 class ServiceProviderResponse(
     val id: String,
-    val name: String,
+    val companyName: String,
     val category: ServiceProviderCategory?,
     val contact: Contact,
     var location: Location,
     var openingHours: OpeningHours,
-    val description: String
+    val description: String,
+    val services: List<Service>,
+    val employees: List<Employee>
 ) {
     companion object {
         fun fromEntity(serviceProvider: ServiceProvider): ServiceProviderResponse =
             ServiceProviderResponse(
                 id = serviceProvider.id,
-                name = serviceProvider.name,
+                companyName = serviceProvider.name,
                 category = serviceProvider.category,
                 contact = serviceProvider.contact,
                 location = serviceProvider.location,
                 openingHours = serviceProvider.openingHours,
-                description = serviceProvider.description
+                description = serviceProvider.description,
+                services = serviceProvider.services,
+                employees = serviceProvider.employee
             )
     }
 }

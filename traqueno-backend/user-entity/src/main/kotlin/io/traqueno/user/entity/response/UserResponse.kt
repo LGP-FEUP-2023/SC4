@@ -3,6 +3,10 @@ package io.traqueno.user.entity.response
 import io.traqueno.user.entity.model.User
 
 data class LoginResponse(
+    val id: String,
+    val firstName: String,
+    val lastName: String,
+    val email: String,
     val token: String
 )
 

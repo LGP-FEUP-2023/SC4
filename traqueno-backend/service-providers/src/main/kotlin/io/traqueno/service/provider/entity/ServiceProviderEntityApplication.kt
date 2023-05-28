@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class ServiceProviderEntityApplication
 
 fun main(args: Array<String>) {
-	runApplication<ServiceProviderEntityApplication>(*args)
+    runApplication<ServiceProviderEntityApplication>(*args)
 }

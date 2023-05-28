@@ -26,7 +26,10 @@ class ServiceProviderService(
                 location = request.location,
                 openingHours = request.openingHours,
                 description = request.description,
-                category = category
+                category = category,
+                services = request.services,
+                employee = request.employees
+
             )
         )
     }
@@ -49,8 +52,8 @@ class ServiceProviderService(
             )
     }
 
-    fun findAllByCategoryEquals(category: String): ResponseEntity<List<ServiceProviderResponse>> {
-        val serviceProvides = serviceProviderRepository.findAllByCategoryEquals(category)
+    fun findAllByCategoryId(category: String): ResponseEntity<List<ServiceProviderResponse>> {
+        val serviceProvides = serviceProviderRepository.findAllByCategory_Id(category)
 
         return ResponseEntity
             .ok(

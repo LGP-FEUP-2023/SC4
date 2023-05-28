@@ -31,6 +31,10 @@ class UserController(
         }
 
         return LoginResponse(
+            id = user.id,
+            firstName = user.firstName,
+            lastName = user.lastName,
+            email = user.email,
             token = tokenService.createToken(user),
         )
     }
@@ -51,6 +55,10 @@ class UserController(
         val savedUser = userService.createUser(user);
 
         return LoginResponse(
+            id = savedUser.id,
+            firstName = user.firstName,
+            lastName = user.lastName,
+            email = user.email,
             token = tokenService.createToken(savedUser),
         )
     }

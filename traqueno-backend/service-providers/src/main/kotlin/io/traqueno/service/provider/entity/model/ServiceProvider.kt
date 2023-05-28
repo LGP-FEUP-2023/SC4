@@ -13,8 +13,11 @@ data class ServiceProvider(
     var location: Location,
     var openingHours: OpeningHours,
     var description: String,
-    var category: ServiceProviderCategory?
+    var category: ServiceProviderCategory?,
+    var services: List<Service>,
+    var employee: List<Employee>
 )
+
 data class OpeningHours(
     val monday: Array<Interval>?,
     val tuesday: Array<Interval>?,

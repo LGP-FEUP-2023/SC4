@@ -1,8 +1,6 @@
 package io.traqueno.service.provider.entity.request
 
-import io.traqueno.service.provider.entity.model.Contact
-import io.traqueno.service.provider.entity.model.Location
-import io.traqueno.service.provider.entity.model.OpeningHours
+import io.traqueno.service.provider.entity.model.*
 
 class ServiceProviderRequest(
     val name: String,
@@ -10,5 +8,7 @@ class ServiceProviderRequest(
     val contact: Contact,
     var location: Location,
     var openingHours: OpeningHours,
-    val description: String
+    val description: String,
+    val services: List<Service>,
+    val employees: List<Employee>
 )
