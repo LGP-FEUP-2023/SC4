@@ -746,7 +746,18 @@ class _ServiceProviderDetailWidgetState
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  context.pushNamed('serviceListBook');
+                  context.pushNamed(
+                    'serviceListBook',
+                    queryParams: {
+                      'serviceProviderDetailData': serializeParam(
+                        getJsonField(
+                          widget.serviceProviderData,
+                          r'''$''',
+                        ),
+                        ParamType.JSON,
+                      ),
+                    }.withoutNulls,
+                  );
                 },
                 child: Container(
                   width: double.infinity,

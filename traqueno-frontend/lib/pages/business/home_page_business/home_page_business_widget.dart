@@ -242,8 +242,16 @@ class _HomePageBusinessWidgetState extends State<HomePageBusinessWidget>
                   color: Color(0xFFFF0000),
                   size: 30.0,
                 ),
-                onPressed: () {
-                  print('IconButton pressed ...');
+                onPressed: () async {
+                  context.pushNamed(
+                    'profileBusiness',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.leftToRight,
+                      ),
+                    },
+                  );
                 },
               ),
             ),
@@ -659,7 +667,7 @@ class _HomePageBusinessWidgetState extends State<HomePageBusinessWidget>
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
-                                  '07/06',
+                                  '05/06',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -669,7 +677,7 @@ class _HomePageBusinessWidgetState extends State<HomePageBusinessWidget>
                                       ),
                                 ),
                                 Text(
-                                  '10:00',
+                                  '15:00',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -717,7 +725,7 @@ class _HomePageBusinessWidgetState extends State<HomePageBusinessWidget>
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
-                                  '07/06',
+                                  '04/06',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -727,7 +735,7 @@ class _HomePageBusinessWidgetState extends State<HomePageBusinessWidget>
                                       ),
                                 ),
                                 Text(
-                                  '10:00',
+                                  '20:30',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -761,12 +769,20 @@ class _HomePageBusinessWidgetState extends State<HomePageBusinessWidget>
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
                       child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          context.pushNamed(
+                            'agendaBusiness',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.leftToRight,
+                              ),
+                            },
+                          );
                         },
-                        text: 'All Notifications',
+                        text: 'All Bookings',
                         icon: Icon(
-                          Icons.notifications,
+                          Icons.calendar_today,
                           size: 15.0,
                         ),
                         options: FFButtonOptions(
@@ -882,14 +898,14 @@ class _HomePageBusinessWidgetState extends State<HomePageBusinessWidget>
                                                   .fromSTEB(
                                                       2.0, 0.0, 10.0, 0.0),
                                               child: Text(
-                                                random_data
-                                                    .randomInteger(2, 5)
-                                                    .toString(),
+                                                '4',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Ubuntu',
+                                                          fontWeight:
+                                                              FontWeight.bold,
                                                         ),
                                               ),
                                             ),
@@ -967,14 +983,14 @@ class _HomePageBusinessWidgetState extends State<HomePageBusinessWidget>
                                                   .fromSTEB(
                                                       2.0, 0.0, 10.0, 0.0),
                                               child: Text(
-                                                random_data
-                                                    .randomInteger(2, 5)
-                                                    .toString(),
+                                                '5',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Ubuntu',
+                                                          fontWeight:
+                                                              FontWeight.bold,
                                                         ),
                                               ),
                                             ),
@@ -992,7 +1008,7 @@ class _HomePageBusinessWidgetState extends State<HomePageBusinessWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 10.0, 0.0, 0.0),
                                           child: Text(
-                                            'Tive uma experiência incrível nesta barbearia. Desde o momento em que entrei, fui recebido com um sorriso caloroso e um ambiente acolhedor.',
+                                            'O ambiente descontraído e acolhedor fez com que eu me sentisse relaxado e à vontade. Além disso, os preços são justos e acessíveis.',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -1022,8 +1038,16 @@ class _HomePageBusinessWidgetState extends State<HomePageBusinessWidget>
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
                       child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          context.pushNamed(
+                            'reviewsBusiness',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.leftToRight,
+                              ),
+                            },
+                          );
                         },
                         text: 'All Reviews',
                         icon: Icon(

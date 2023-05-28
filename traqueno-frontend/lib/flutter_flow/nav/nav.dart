@@ -126,12 +126,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'serviceListBook',
           path: '/serviceListBook',
-          builder: (context, params) => ServiceListBookWidget(),
-        ),
-        FFRoute(
-          name: 'detailListBook',
-          path: '/detailListBook',
-          builder: (context, params) => DetailListBookWidget(),
+          builder: (context, params) => ServiceListBookWidget(
+            serviceProviderDetailData:
+                params.getParam('serviceProviderDetailData', ParamType.JSON),
+          ),
         ),
         FFRoute(
           name: 'serviceDetailListBook',
@@ -159,6 +157,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'homePageBusiness',
           path: '/homePageBusiness',
           builder: (context, params) => HomePageBusinessWidget(),
+        ),
+        FFRoute(
+          name: 'profileBusiness',
+          path: '/profileBusiness',
+          builder: (context, params) => ProfileBusinessWidget(),
+        ),
+        FFRoute(
+          name: 'settingsBusiness',
+          path: '/settingsBusiness',
+          builder: (context, params) => SettingsBusinessWidget(),
+        ),
+        FFRoute(
+          name: 'reviewsBusiness',
+          path: '/reviewsBusiness',
+          builder: (context, params) => ReviewsBusinessWidget(),
+        ),
+        FFRoute(
+          name: 'agendaBusiness',
+          path: '/agendaBusiness',
+          builder: (context, params) => AgendaBusinessWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,
