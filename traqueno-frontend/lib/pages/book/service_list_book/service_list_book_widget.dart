@@ -9,7 +9,12 @@ import 'service_list_book_model.dart';
 export 'service_list_book_model.dart';
 
 class ServiceListBookWidget extends StatefulWidget {
-  const ServiceListBookWidget({Key? key}) : super(key: key);
+  const ServiceListBookWidget({
+    Key? key,
+    required this.serviceProviderDetailData,
+  }) : super(key: key);
+
+  final dynamic serviceProviderDetailData;
 
   @override
   _ServiceListBookWidgetState createState() => _ServiceListBookWidgetState();
@@ -109,7 +114,7 @@ class _ServiceListBookWidgetState extends State<ServiceListBookWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Nails',
+                              'Beard',
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
                                   .override(
@@ -149,7 +154,7 @@ class _ServiceListBookWidgetState extends State<ServiceListBookWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Hairdresser',
+                              'Hair',
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
                                   .override(

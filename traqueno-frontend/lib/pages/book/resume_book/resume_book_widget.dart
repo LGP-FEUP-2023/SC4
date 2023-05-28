@@ -145,7 +145,7 @@ class _ResumeBookWidgetState extends State<ResumeBookWidget> {
                                         .override(
                                           fontFamily: 'Ubuntu',
                                           color: Color(0xFF14181B),
-                                          fontSize: 20.0,
+                                          fontSize: 26.0,
                                           fontWeight: FontWeight.normal,
                                         ),
                                   ),
@@ -217,7 +217,7 @@ class _ResumeBookWidgetState extends State<ResumeBookWidget> {
                                       ),
                                     ),
                                     Text(
-                                      '27/05/2023 at 15:00h',
+                                      '27/05/2023 at 15:00',
                                       style: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .override(
@@ -244,7 +244,7 @@ class _ResumeBookWidgetState extends State<ResumeBookWidget> {
                                     ),
                                   ),
                                   Text(
-                                    '27/05/2023 at 15:00h',
+                                    'R. de Alexandre Braga 62, Porto',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineMedium
                                         .override(

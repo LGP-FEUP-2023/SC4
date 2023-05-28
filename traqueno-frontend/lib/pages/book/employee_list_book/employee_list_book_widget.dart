@@ -100,27 +100,37 @@ class _EmployeeListBookWidgetState extends State<EmployeeListBookWidget> {
                         ],
                         borderRadius: BorderRadius.circular(8.0),
                       ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            12.0, 12.0, 12.0, 12.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Maria Silva',
-                              style: FlutterFlowTheme.of(context)
-                                  .headlineMedium
-                                  .override(
-                                    fontFamily: 'Ubuntu',
-                                    color: Color(0xFF14181B),
-                                    fontSize: 24.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 10.0, 20.0, 10.0),
+                            child: Container(
+                              width: 60.0,
+                              height: 60.0,
+                              clipBehavior: Clip.antiAlias,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                              ),
+                              child: Image.asset(
+                                'assets/images/woman1.jpeg',
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ],
-                        ),
+                          ),
+                          Text(
+                            'Maria Silva',
+                            style: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .override(
+                                  fontFamily: 'Ubuntu',
+                                  color: Color(0xFF14181B),
+                                  fontSize: 24.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -140,27 +150,37 @@ class _EmployeeListBookWidgetState extends State<EmployeeListBookWidget> {
                         ],
                         borderRadius: BorderRadius.circular(8.0),
                       ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            12.0, 12.0, 12.0, 12.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'João Pereira',
-                              style: FlutterFlowTheme.of(context)
-                                  .headlineMedium
-                                  .override(
-                                    fontFamily: 'Ubuntu',
-                                    color: Color(0xFF14181B),
-                                    fontSize: 24.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 10.0, 20.0, 10.0),
+                            child: Container(
+                              width: 60.0,
+                              height: 60.0,
+                              clipBehavior: Clip.antiAlias,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                              ),
+                              child: Image.asset(
+                                'assets/images/men1.avif',
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ],
-                        ),
+                          ),
+                          Text(
+                            'João Lobo',
+                            style: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .override(
+                                  fontFamily: 'Ubuntu',
+                                  color: Color(0xFF14181B),
+                                  fontSize: 24.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

@@ -19,10 +19,10 @@ export 'service_provider_list_model.dart';
 class ServiceProviderListWidget extends StatefulWidget {
   const ServiceProviderListWidget({
     Key? key,
-    required this.serviceData,
+    required this.categoryData,
   }) : super(key: key);
 
-  final dynamic serviceData;
+  final dynamic categoryData;
 
   @override
   _ServiceProviderListWidgetState createState() =>
@@ -270,7 +270,7 @@ class _ServiceProviderListWidgetState extends State<ServiceProviderListWidget>
                 child: FutureBuilder<ApiCallResponse>(
                   future: GetServicesProviderByCategoryCall.call(
                     id: getJsonField(
-                      widget.serviceData,
+                      widget.categoryData,
                       r'''$..id''',
                     ).toString(),
                   ),
@@ -329,7 +329,7 @@ class _ServiceProviderListWidgetState extends State<ServiceProviderListWidget>
                                         children: [
                                           Text(
                                             getJsonField(
-                                              widget.serviceData,
+                                              widget.categoryData,
                                               r'''$..name''',
                                             ).toString(),
                                             style: FlutterFlowTheme.of(context)
@@ -481,7 +481,7 @@ class _ServiceProviderListWidgetState extends State<ServiceProviderListWidget>
                                   ..complete(
                                       GetServicesProviderByCategoryCall.call(
                                     id: getJsonField(
-                                      widget.serviceData,
+                                      widget.categoryData,
                                       r'''$..id''',
                                     ).toString(),
                                   )))
@@ -514,40 +514,51 @@ class _ServiceProviderListWidgetState extends State<ServiceProviderListWidget>
                                                 .jsonBody,
                                           )?.toList() ??
                                           [];
-                                  return InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context
-                                          .pushNamed('serviceProviderDetail');
+                                  return RefreshIndicator(
+                                    onRefresh: () async {
+                                      setState(() =>
+                                          _model.apiRequestCompleter = null);
+                                      await _model.waitForApiRequestCompleted();
                                     },
-                                    child: RefreshIndicator(
-                                      onRefresh: () async {
-                                        setState(() =>
-                                            _model.apiRequestCompleter = null);
-                                        await _model
-                                            .waitForApiRequestCompleted();
-                                      },
-                                      child: ListView.builder(
-                                        padding: EdgeInsets.zero,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: serviceProviderData.length,
-                                        itemBuilder: (context,
-                                            serviceProviderDataIndex) {
-                                          final serviceProviderDataItem =
-                                              serviceProviderData[
-                                                  serviceProviderDataIndex];
-                                          return Visibility(
-                                            visible:
-                                                listViewGetServicesProviderByCategoryResponse
-                                                    .succeeded,
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 0.0, 10.0),
+                                    child: ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: serviceProviderData.length,
+                                      itemBuilder:
+                                          (context, serviceProviderDataIndex) {
+                                        final serviceProviderDataItem =
+                                            serviceProviderData[
+                                                serviceProviderDataIndex];
+                                        return Visibility(
+                                          visible:
+                                              listViewGetServicesProviderByCategoryResponse
+                                                  .succeeded,
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 10.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                  'serviceProviderDetail',
+                                                  queryParams: {
+                                                    'serviceProviderData':
+                                                        serializeParam(
+                                                      getJsonField(
+                                                        serviceProviderDataItem,
+                                                        r'''$''',
+                                                      ),
+                                                      ParamType.JSON,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              },
                                               child: Container(
                                                 width: double.infinity,
                                                 decoration: BoxDecoration(
@@ -831,12 +842,12 @@ class _ServiceProviderListWidgetState extends State<ServiceProviderListWidget>
                                                     ],
                                                   ),
                                                 ),
-                                              ).animateOnPageLoad(animationsMap[
-                                                  'containerOnPageLoadAnimation']!),
-                                            ),
-                                          );
-                                        },
-                                      ),
+                                              ),
+                                            ).animateOnPageLoad(animationsMap[
+                                                'containerOnPageLoadAnimation']!),
+                                          ),
+                                        );
+                                      },
                                     ),
                                   );
                                 },

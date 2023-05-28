@@ -125,7 +125,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            'Store/Location Name',
+                                            'Bigorna Barber Shop',
                                             style: FlutterFlowTheme.of(context)
                                                 .titleSmall
                                                 .override(
@@ -138,30 +138,29 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Text(
-                                            '123 Address St, City, ST',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall
-                                                .override(
-                                                  fontFamily: 'Ubuntu',
-                                                  fontSize: 16.0,
-                                                ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 3.0, 0.0),
+                                            child: Icon(
+                                              Icons.location_on,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 20.0,
+                                            ),
                                           ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            '1.7 km',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Ubuntu',
-                                                  color: Color(0xFFFF0000),
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
+                                          Flexible(
+                                            child: Text(
+                                              'R. de Alexandre Braga 64, Porto',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Ubuntu',
+                                                        fontSize: 16.0,
+                                                      ),
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -232,7 +231,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            'Store/Location Name',
+                                            'Clínica Vida Ativa',
                                             style: FlutterFlowTheme.of(context)
                                                 .titleSmall
                                                 .override(
@@ -245,30 +244,29 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Text(
-                                            '123 Address St, City, ST',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall
-                                                .override(
-                                                  fontFamily: 'Ubuntu',
-                                                  fontSize: 16.0,
-                                                ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 3.0, 0.0),
+                                            child: Icon(
+                                              Icons.location_on,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 20.0,
+                                            ),
                                           ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            '1.7 km',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Ubuntu',
-                                                  color: Color(0xFFFF0000),
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
+                                          Flexible(
+                                            child: Text(
+                                              'Av. da Boavista 117 Sala 301, Porto',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Ubuntu',
+                                                        fontSize: 16.0,
+                                                      ),
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -339,7 +337,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            'Store/Location Name',
+                                            'YANTRA Centro Holístico',
                                             style: FlutterFlowTheme.of(context)
                                                 .titleSmall
                                                 .override(
@@ -352,30 +350,29 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Text(
-                                            '123 Address St, City, ST',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall
-                                                .override(
-                                                  fontFamily: 'Ubuntu',
-                                                  fontSize: 16.0,
-                                                ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 3.0, 0.0),
+                                            child: Icon(
+                                              Icons.location_on,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 20.0,
+                                            ),
                                           ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            '1.7 km',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Ubuntu',
-                                                  color: Color(0xFFFF0000),
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
+                                          Flexible(
+                                            child: Text(
+                                              'R. de Sacadura Cabral 52, Porto',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Ubuntu',
+                                                        fontSize: 16.0,
+                                                      ),
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -446,7 +443,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            'Store/Location Name',
+                                            'Tiendanimal',
                                             style: FlutterFlowTheme.of(context)
                                                 .titleSmall
                                                 .override(
@@ -459,30 +456,29 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Text(
-                                            '123 Address St, City, ST',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall
-                                                .override(
-                                                  fontFamily: 'Ubuntu',
-                                                  fontSize: 16.0,
-                                                ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 3.0, 0.0),
+                                            child: Icon(
+                                              Icons.location_on,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 20.0,
+                                            ),
                                           ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            '1.7 km',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Ubuntu',
-                                                  color: Color(0xFFFF0000),
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
+                                          Flexible(
+                                            child: Text(
+                                              'C.C Cidade do Porto, Loja 35 Praça do Bom Sucesso, Porto',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Ubuntu',
+                                                        fontSize: 16.0,
+                                                      ),
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -553,7 +549,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            'Store/Location Name',
+                                            'Jardim d`Inverno',
                                             style: FlutterFlowTheme.of(context)
                                                 .titleSmall
                                                 .override(
@@ -566,30 +562,29 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Text(
-                                            '123 Address St, City, ST',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall
-                                                .override(
-                                                  fontFamily: 'Ubuntu',
-                                                  fontSize: 16.0,
-                                                ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 3.0, 0.0),
+                                            child: Icon(
+                                              Icons.location_on,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 20.0,
+                                            ),
                                           ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            '1.7 km',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Ubuntu',
-                                                  color: Color(0xFFFF0000),
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
+                                          Flexible(
+                                            child: Text(
+                                              'R. de Serralves 124, Porto',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Ubuntu',
+                                                        fontSize: 16.0,
+                                                      ),
+                                            ),
                                           ),
                                         ],
                                       ),
