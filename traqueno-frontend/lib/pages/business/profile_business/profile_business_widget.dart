@@ -390,7 +390,7 @@ class _ProfileBusinessWidgetState extends State<ProfileBusinessWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'profileBusiness',
+                                'settingsBusiness',
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,

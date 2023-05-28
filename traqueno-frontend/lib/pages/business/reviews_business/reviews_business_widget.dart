@@ -83,7 +83,7 @@ class _ReviewsBusinessWidgetState extends State<ReviewsBusinessWidget> {
                 ),
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(12.0, 16.0, 12.0, 24.0),
+                      EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -104,7 +104,7 @@ class _ReviewsBusinessWidgetState extends State<ReviewsBusinessWidget> {
                                       .displaySmall
                                       .override(
                                         fontFamily: 'Ubuntu',
-                                        fontSize: 28.0,
+                                        fontSize: 38.0,
                                       ),
                                 ),
                               ),
@@ -114,7 +114,7 @@ class _ReviewsBusinessWidgetState extends State<ReviewsBusinessWidget> {
                                 child: Icon(
                                   Icons.star_rounded,
                                   color: Color(0xFFFF0000),
-                                  size: 24.0,
+                                  size: 32.0,
                                 ),
                               ),
                             ],
@@ -125,7 +125,7 @@ class _ReviewsBusinessWidgetState extends State<ReviewsBusinessWidget> {
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Ubuntu',
-                                  fontSize: 12.0,
+                                  fontSize: 16.0,
                                 ),
                           ),
                         ],
